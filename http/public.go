@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/dream10201/filebrowser/v2/files"
+	"github.com/dream10201/filecloud/v2/files"
 )
 
 var withHashFile = func(fn handleFunc) handleFunc {
@@ -40,7 +40,7 @@ var withHashFile = func(fn handleFunc) handleFunc {
 	}
 }
 
-// ref to https://github.com/dream10201/filebrowser/pull/727
+// ref to https://github.com/dream10201/filecloud/pull/727
 // `/api/public/dl/MEEuZK-v/file-name.txt` for old browsers to save file with correct name
 func ifPathWithName(r *http.Request) string {
 	pathElements := strings.Split(r.URL.Path, "/")

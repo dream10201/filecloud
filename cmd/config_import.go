@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"reflect"
 
-	"github.com/dream10201/filebrowser/v2/auth"
-	"github.com/dream10201/filebrowser/v2/settings"
+	"github.com/dream10201/filecloud/v2/auth"
+	"github.com/dream10201/filecloud/v2/settings"
 	"github.com/spf13/cobra"
 )
 

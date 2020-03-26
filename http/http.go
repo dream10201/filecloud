@@ -3,8 +3,8 @@ package http
 import (
 	"net/http"
 
-	"github.com/dream10201/filebrowser/v2/settings"
-	"github.com/dream10201/filebrowser/v2/storage"
+	"github.com/dream10201/filecloud/v2/settings"
+	"github.com/dream10201/filecloud/v2/storage"
 	"github.com/gorilla/mux"
 )
 

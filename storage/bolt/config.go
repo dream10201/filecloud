@@ -2,7 +2,7 @@ package bolt
 
 import (
 	"github.com/asdine/storm"
-	"github.com/dream10201/filebrowser/v2/settings"
+	"github.com/dream10201/filecloud/v2/settings"
 )
 
 type settingsBackend struct {

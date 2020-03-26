@@ -9,7 +9,7 @@ COPY --from=alpine /etc/mime.types /etc/mime.types
 VOLUME /srv
 EXPOSE 80
 
-COPY .docker.json /.filebrowser.json
-COPY filebrowser /filebrowser
+COPY .docker.json /.filecloud.json
+COPY filecloud /filecloud
 
-ENTRYPOINT [ "/filebrowser" ]
+ENTRYPOINT [ "/filecloud" ]

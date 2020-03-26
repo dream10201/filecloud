@@ -1,16 +1,16 @@
-const name = window.FileBrowser.Name || 'File Browser'
-const disableExternal = window.FileBrowser.DisableExternal
-const baseURL = window.FileBrowser.BaseURL
-const staticURL = window.FileBrowser.StaticURL
-const recaptcha = window.FileBrowser.ReCaptcha
-const recaptchaKey = window.FileBrowser.ReCaptchaKey
-const signup = window.FileBrowser.Signup
-const version = window.FileBrowser.Version
+const name = window.filecloud.Name || 'File Browser'
+const disableExternal = window.filecloud.DisableExternal
+const baseURL = window.filecloud.BaseURL
+const staticURL = window.filecloud.StaticURL
+const recaptcha = window.filecloud.ReCaptcha
+const recaptchaKey = window.filecloud.ReCaptchaKey
+const signup = window.filecloud.Signup
+const version = window.filecloud.Version
 const logoURL = `/${staticURL}/img/logo.svg`
-const noAuth = window.FileBrowser.NoAuth
-const authMethod = window.FileBrowser.AuthMethod
-const loginPage = window.FileBrowser.LoginPage
-const theme = window.FileBrowser.Theme
+const noAuth = window.filecloud.NoAuth
+const authMethod = window.filecloud.AuthMethod
+const loginPage = window.filecloud.LoginPage
+const theme = window.filecloud.Theme
 
 export {
   name,

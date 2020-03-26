@@ -1,8 +1,8 @@
 package settings
 
 import (
-	"github.com/dream10201/filebrowser/v2/files"
-	"github.com/dream10201/filebrowser/v2/users"
+	"github.com/dream10201/filecloud/v2/files"
+	"github.com/dream10201/filecloud/v2/users"
 )
 
 // UserDefaults is a type that holds the default values

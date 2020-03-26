@@ -32,7 +32,7 @@ Vue.prototype.$showError = (error) => {
 
   if (!disableExternal) {
     btns.unshift(Noty.button(i18n.t('buttons.reportIssue'), '', function () {
-      window.open('https://github.com/dream10201/filebrowser/issues/new/choose')
+      window.open('https://github.com/dream10201/filecloud/issues/new/choose')
     }))
   }
 

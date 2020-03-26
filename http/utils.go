@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/dream10201/filebrowser/v2/errors"
+	"github.com/dream10201/filecloud/v2/errors"
 )
 
 func renderJSON(w http.ResponseWriter, r *http.Request, data interface{}) (int, error) {

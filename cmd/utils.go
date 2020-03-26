@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 
 	"github.com/asdine/storm"
-	"github.com/dream10201/filebrowser/v2/settings"
-	"github.com/dream10201/filebrowser/v2/storage"
-	"github.com/dream10201/filebrowser/v2/storage/bolt"
+	"github.com/dream10201/filecloud/v2/settings"
+	"github.com/dream10201/filecloud/v2/storage"
+	"github.com/dream10201/filecloud/v2/storage/bolt"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	yaml "gopkg.in/yaml.v2"
@@ -90,7 +90,7 @@ func python(fn pythonFunc, cfg pythonConfig) cobraFunc {
 		} else if exists && cfg.noDB {
 			log.Fatal(path + " already exists")
 		} else if !exists && !cfg.noDB && !cfg.allowNoDB {
-			log.Fatal(path + " does not exist. Please run 'filebrowser config init' first.")
+			log.Fatal(path + " does not exist. Please run 'filecloud config init' first.")
 		}
 
 		data.hadDB = exists

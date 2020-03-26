@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/dream10201/filebrowser/v2/storage/bolt/importer"
+	"github.com/dream10201/filecloud/v2/storage/bolt/importer"
 	"github.com/spf13/cobra"
 )
 

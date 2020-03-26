@@ -1,4 +1,4 @@
-module github.com/dream10201/filebrowser/v2
+module github.com/dream10201/filecloud/v2
 
 require (
 	github.com/DataDog/zstd v1.4.0 // indirect
@@ -36,4 +36,4 @@ require (
 	gopkg.in/yaml.v2 v2.2.7
 )
 
-go 1.13
+go 1.14

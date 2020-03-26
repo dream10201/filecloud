@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/dream10201/filebrowser/v2/users"
+	"github.com/dream10201/filecloud/v2/users"
 	"github.com/spf13/cobra"
 )
 

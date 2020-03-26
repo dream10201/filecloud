@@ -30,12 +30,12 @@
 
   <!-- Inject Some Variables and generate the manifest json -->
   <script>
-    window.FileBrowser = JSON.parse(`[{[ .Json ]}]`);
+    window.filecloud = JSON.parse(`[{[ .Json ]}]`);
     
-    var fullStaticURL = window.location.origin + "/" + window.FileBrowser.StaticURL; 
+    var fullStaticURL = window.location.origin + "/" + window.filecloud.StaticURL;
     var dynamicManifest = {
-      "name": window.FileBrowser.Name || 'File Browser',
-      "short_name": window.FileBrowser.Name || 'File Browser',
+      "name": window.filecloud.Name || 'File Browser',
+      "short_name": window.filecloud.Name || 'File Browser',
       "icons": [
         {
           "src": fullStaticURL + "/img/icons/android-chrome-192x192.png",
@@ -48,7 +48,7 @@
           "type": "image/png"
         }
       ],
-      "start_url": window.location.origin + window.FileBrowser.BaseURL,
+      "start_url": window.location.origin + window.filecloud.BaseURL,
       "display": "standalone",
       "background_color": "#ffffff",
       "theme_color": "#455a64"

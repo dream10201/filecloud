@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/dream10201/filebrowser/v2/errors"
+	"github.com/dream10201/filecloud/v2/errors"
 )
 
 // StorageBackend is the interface to implement for a users storage.

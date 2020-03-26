@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/dream10201/filebrowser/v2/rules"
-	"github.com/dream10201/filebrowser/v2/settings"
+	"github.com/dream10201/filecloud/v2/rules"
+	"github.com/dream10201/filecloud/v2/settings"
 )
 
 type settingsData struct {

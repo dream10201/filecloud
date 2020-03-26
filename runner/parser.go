@@ -3,7 +3,7 @@ package runner
 import (
 	"os/exec"
 
-	"github.com/dream10201/filebrowser/v2/settings"
+	"github.com/dream10201/filecloud/v2/settings"
 	"github.com/caddyserver/caddy"
 )
 

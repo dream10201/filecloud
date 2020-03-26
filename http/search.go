@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/dream10201/filebrowser/v2/search"
+	"github.com/dream10201/filecloud/v2/search"
 )
 
 var searchHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
