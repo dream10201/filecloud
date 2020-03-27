@@ -6,6 +6,8 @@ env:
 before:
   hooks:
     - go mod download
+    - rm -rf ./http/rice-box.go
+    - rice embed-go -i ./http/
 
 build:
   env:
