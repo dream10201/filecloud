@@ -124,7 +124,7 @@
     "documentation": "documentation",
     "branding": "Branding",
     "disableExternalLinks": "Disable external links (except documentation)",
-    "brandingHelp": "You can costumize how your File Browser instance looks and feels by changing its name, replacing the logo, adding custom styles and even disable external links to GitHub.\nFor more information about custom branding, please check out the {0}.",
+    "brandingHelp": "You can costumize how your File Cloud instance looks and feels by changing its name, replacing the logo, adding custom styles and even disable external links to GitHub.\nFor more information about custom branding, please check out the {0}.",
     "admin": "管理員",
     "administrator": "管理員",
     "allowCommands": "執行命令",
@@ -172,7 +172,7 @@
     "userDefaults": "User default settings",
     "defaultUserDescription": "This are the default settings for new users.",
     "executeOnShell": "Execute on shell",
-    "executeOnShellDescription": "By default, File Browser executes the commands by calling their binaries directly. If you want to run them on a shell instead (such as Bash or PowerShell), you can define it here with the  required arguments and flags. If set, the command you execute will be appended as an argument. This apply to both user commands and event hooks.",
+    "executeOnShellDescription": "By default, File Cloud executes the commands by calling their binaries directly. If you want to run them on a shell instead (such as Bash or PowerShell), you can define it here with the  required arguments and flags. If set, the command you execute will be appended as an argument. This apply to both user commands and event hooks.",
     "perm": {
       "create": "建立檔案和資料夾",
       "delete": "刪除檔案和資料夾",

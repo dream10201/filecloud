@@ -39,7 +39,7 @@ func addConfigFlags(flags *pflag.FlagSet) {
 	flags.String("recaptcha.key", "", "ReCaptcha site key")
 	flags.String("recaptcha.secret", "", "ReCaptcha secret")
 
-	flags.String("branding.name", "", "replace 'File Browser' by this name")
+	flags.String("branding.name", "", "replace 'File Cloud' by this name")
 	flags.String("branding.files", "", "path to directory with images and custom styles")
 	flags.Bool("branding.disableExternal", false, "disable external links such as GitHub links")
 }

@@ -124,7 +124,7 @@
     "documentation": "문서",
     "branding": "브랜딩",
     "disableExternalLinks": "외부 링크 감추기",
-    "brandingHelp": "File Browser 인스턴스는 이름, 로고, 스타일 등을 변경할 수 있습니다. 자세한 사항은 여기{0}에서 확인하세요.",
+    "brandingHelp": "File Cloud 인스턴스는 이름, 로고, 스타일 등을 변경할 수 있습니다. 자세한 사항은 여기{0}에서 확인하세요.",
     "admin": "관리자",
     "administrator": "관리자",
     "allowCommands": "명령 실행",
@@ -172,7 +172,7 @@
     "userDefaults": "사용자 기본 설정",
     "defaultUserDescription": "아래 사항은 신규 사용자들에 대한 기본 설정입니다.",
     "executeOnShell": "쉘에서 실행",
-    "executeOnShellDescription": "기본적으로 File Browser 는 바이너리를 명령어로 호출하여 실행합니다. 쉘을 통해 실행하기를 원한다면, Bash 또는 PowerShell 에 필요한 인수와 플래그를 설정하세요. 사용자 명령어와 이벤트 훅에 모두 적용됩니다.",
+    "executeOnShellDescription": "기본적으로 File Cloud 는 바이너리를 명령어로 호출하여 실행합니다. 쉘을 통해 실행하기를 원한다면, Bash 또는 PowerShell 에 필요한 인수와 플래그를 설정하세요. 사용자 명령어와 이벤트 훅에 모두 적용됩니다.",
     "perm": {
       "create": "파일이나 디렉토리 생성하기",
       "delete": "화일이나 디렉토리 삭제하기",

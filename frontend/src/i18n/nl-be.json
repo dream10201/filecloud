@@ -124,7 +124,7 @@
     "documentation": "Documentatie",
     "branding": "Branding",
     "disableExternalLinks": "Schakel externe links uit (behalve documentatie)",
-    "brandingHelp": "U kunt de looks en feels hoe File Browser wordt getoond wijzigen door de naam aan te passen, het logo te vervangen, een aangepast stylesheet toe te voegen en/of de externe links naar GitHub uit te schakelen.\nVoor meer informatie over custom branding, bekijk {0}.",
+    "brandingHelp": "U kunt de looks en feels hoe File Cloud wordt getoond wijzigen door de naam aan te passen, het logo te vervangen, een aangepast stylesheet toe te voegen en/of de externe links naar GitHub uit te schakelen.\nVoor meer informatie over custom branding, bekijk {0}.",
     "admin": "Admin",
     "administrator": "Administrator",
     "allowCommands": "Commando's uitvoeren",
@@ -172,7 +172,7 @@
     "userDefaults": "Standaardinstellingen gebruiker",
     "defaultUserDescription": "Dit zijn de standaardinstellingen voor nieuwe gebruikers.",
     "executeOnShell": "Uitvoeren in de shell",
-    "executeOnShellDescription": "File Browser voert de opdrachten standaard uit door hun binaire bestanden rechtstreeks op te roepen. Als u ze in plaats daarvan wilt uitvoeren op een shell (zoals Bash of PowerShell), kunt u dit hier definiëren met de vereiste argumenten en vlaggen. Indien ingesteld, wordt de opdracht die u uitvoert, toegevoegd als een argument. Dit is van toepassing op zowel gebruikersopdrachten als event hooks.",
+    "executeOnShellDescription": "File Cloud voert de opdrachten standaard uit door hun binaire bestanden rechtstreeks op te roepen. Als u ze in plaats daarvan wilt uitvoeren op een shell (zoals Bash of PowerShell), kunt u dit hier definiëren met de vereiste argumenten en vlaggen. Indien ingesteld, wordt de opdracht die u uitvoert, toegevoegd als een argument. Dit is van toepassing op zowel gebruikersopdrachten als event hooks.",
     "perm": {
       "create": "Bestanden en mappen aanmaken",
       "delete": "Bestanden en mappen verwijderen",

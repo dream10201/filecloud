@@ -32,7 +32,7 @@ var (
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	rootCmd.SetVersionTemplate("File Browser version {{printf \"%s\" .Version}}\n")
+	rootCmd.SetVersionTemplate("File Cloud version {{printf \"%s\" .Version}}\n")
 
 	flags := rootCmd.Flags()
 	persistent := rootCmd.PersistentFlags()
@@ -59,12 +59,12 @@ func addServerFlags(flags *pflag.FlagSet) {
 
 var rootCmd = &cobra.Command{
 	Use:   "filecloud",
-	Short: "A stylish web-based file browser",
-	Long: `File Browser CLI lets you create the database to use with File Browser,
+	Short: "A stylish web-based File Cloud",
+	Long: `File Cloud CLI lets you create the database to use with File Cloud,
 manage your users and all the configurations without acessing the
 web interface.
 
-If you've never run File Browser, you'll need to have a database for
+If you've never run File Cloud, you'll need to have a database for
 it. Don't worry: you don't need to setup a separate database server.
 We're using Bolt DB which is a single file database and all managed
 by ourselves.
@@ -92,7 +92,7 @@ The environment variables are prefixed by "FB_" followed by the option
 name in caps. So to set "database" via an env variable, you should
 set FB_DATABASE.
 
-Also, if the database path doesn't exist, File Browser will enter into
+Also, if the database path doesn't exist, File Cloud will enter into
 the quick setup mode and a new database will be bootstraped and a new
 user created with the credentials from options "username" and "password".`,
 	Run: python(func(cmd *cobra.Command, args []string, d pythonData) {

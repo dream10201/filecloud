@@ -124,7 +124,7 @@
     "documentation": "documentație",
     "branding": "Branding",
     "disableExternalLinks": "Dezactivează linkurile externe (exceptând documentația)",
-    "brandingHelp": "Poți personaliza cum arată instanța ta de File Browser modificându-i numele, înlocuindu-i logo-ul, adăugându-i stiluri personalizate si chiar dezactivând linkurile catre GitHub.\nPentru mai multe informații despre branding fă click aici",
+    "brandingHelp": "Poți personaliza cum arată instanța ta de File Cloud modificându-i numele, înlocuindu-i logo-ul, adăugându-i stiluri personalizate si chiar dezactivând linkurile catre GitHub.\nPentru mai multe informații despre branding fă click aici",
     "admin": "Admin",
     "administrator": "Administrator",
     "allowCommands": "Execută comenzi",
@@ -172,7 +172,7 @@
     "userDefaults": "Setări implicite",
     "defaultUserDescription": "Acestea sunt setările implicite pentru noii utilizatori.",
     "executeOnShell": "Execută in linia de comandă",
-    "executeOnShellDescription": "Implicit, File Browser execută comenzile prin apelare directă a binarelor. Daca vrei sa le rulezi într-un shell (cum ar fi Bash sau PowerShell), le poți defini aici cu argumentele necesare. Daca este setata, comanda va fi adăugată ca argument. Se aplică pentru comenzi si hookuri.",
+    "executeOnShellDescription": "Implicit, File Cloud execută comenzile prin apelare directă a binarelor. Daca vrei sa le rulezi într-un shell (cum ar fi Bash sau PowerShell), le poți defini aici cu argumentele necesare. Daca este setata, comanda va fi adăugată ca argument. Se aplică pentru comenzi si hookuri.",
     "perm": {
       "create": "Crează fișiere și directoare",
       "delete": "Șterge fișiere și directoare",

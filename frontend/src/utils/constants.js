@@ -1,4 +1,4 @@
-const name = window.filecloud.Name || 'File Browser'
+const name = window.filecloud.Name || 'File Cloud'
 const disableExternal = window.filecloud.DisableExternal
 const baseURL = window.filecloud.BaseURL
 const staticURL = window.filecloud.StaticURL

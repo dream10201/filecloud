@@ -124,7 +124,7 @@
     "documentation": "leiðbeiningar",
     "branding": "Útlit",
     "disableExternalLinks": "Sýna ytri-hlekki (fyrir utan leiðbeiningar)",
-    "brandingHelp": "Þú getur breytt því hvernig File Browser lítur út með því að breyta nafninu, setja inn nýtt lógó, búa til þína eigin stíla og tekið út GitHub-hlekki. \nTil að lesa meira um custom-branding, kíktu á {0}.",
+    "brandingHelp": "Þú getur breytt því hvernig File Cloud lítur út með því að breyta nafninu, setja inn nýtt lógó, búa til þína eigin stíla og tekið út GitHub-hlekki. \nTil að lesa meira um custom-branding, kíktu á {0}.",
     "admin": "Stjórnandi",
     "administrator": "Stjórnandi",
     "allowCommands": "Senda skipanir",
@@ -172,7 +172,7 @@
     "userDefaults": "Sjálfgefnar notendastillingar",
     "defaultUserDescription": "Þetta eru sjálfgefnar stillingar fyrir nýja notendur.",
     "executeOnShell": "Keyra í skel",
-    "executeOnShellDescription": "Sjálfgefnar stillingar File Browser eru að keyra skipanir beint með því að sækja binaries. Ef þú villt keyra skipanir í skel (t.d. í Bash eða PowerShell), þá geturðu skilgreint það hér með nauðsynlegum arguments og flags. Ef þetta er stillt, þá verður skipuninni bætt fyrir aftan sem argument. Þetta gildir bæði um skipanir notenda og event hooks.",
+    "executeOnShellDescription": "Sjálfgefnar stillingar File Cloud eru að keyra skipanir beint með því að sækja binaries. Ef þú villt keyra skipanir í skel (t.d. í Bash eða PowerShell), þá geturðu skilgreint það hér með nauðsynlegum arguments og flags. Ef þetta er stillt, þá verður skipuninni bætt fyrir aftan sem argument. Þetta gildir bæði um skipanir notenda og event hooks.",
     "perm": {
       "create": "Búa til sköl og möppur",
       "delete": "Eyða skjölum og möppum",

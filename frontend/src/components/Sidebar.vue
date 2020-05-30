@@ -44,8 +44,8 @@
 
     <p class="credits">
       <span>
-        <span v-if="disableExternal">File Browser</span>
-        <a v-else rel="noopener noreferrer" target="_blank" href="https://github.com/dream10201/filecloud">File Browser</a>
+        <span v-if="disableExternal">File Cloud</span>
+        <a v-else rel="noopener noreferrer" target="_blank" href="https://github.com/dream10201/filecloud">File Cloud</a>
         <span> {{ version }}</span>
       </span>
       <span><a @click="help">{{ $t('sidebar.help') }}</a></span>
