@@ -55,7 +55,7 @@ checkParam () {
 }
 
 buildBinary () {
-  checkParam $1
+#  checkParam $1
   
   if ! [ -x "$(command -v rice)" ]; then
     go install github.com/GeertJohan/go.rice/rice
@@ -66,8 +66,10 @@ buildBinary () {
   #rice embed-go
   rice embed-go -i .
 
+#  cd $REPO
+#  go build -a -o filecloud -ldflags "-s -w -X github.com/dream10201/filecloud/v2/version.Version=$1 -X github.com/dream10201/filecloud/v2/version.CommitSHA=$COMMIT_SHA"
   cd $REPO
-  go build -a -o filecloud -ldflags "-s -w -X github.com/dream10201/filecloud/v2/version.Version=$1 -X github.com/dream10201/filecloud/v2/version.CommitSHA=$COMMIT_SHA"
+  go build -a -o filebrowser -ldflags "-s -w -X github.com/filebrowser/filebrowser/v2/version.CommitSHA=$COMMIT_SHA"
 }
 
 release () {
@@ -88,7 +90,7 @@ release () {
 }
 
 usage() {
-  echo "Usage: $0 [-a] [-c <string>] [-b <string>] [-r <string>]" 1>&2;
+  echo "Usage: $0 [-a] [-c] [-b] [-r <string>]" 1>&2;
   exit 1;
 }
 
@@ -128,7 +130,7 @@ if [ "$ASSETS" = "true" ]; then
 fi
 
 if [ "$BINARY" = "true" ]; then
-  buildBinary $1
+  buildBinary
 fi
 
 if [ "$RELEASE" != "" ]; then
