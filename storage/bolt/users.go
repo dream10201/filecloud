@@ -4,6 +4,7 @@ import (
 	"reflect"
 
 	"github.com/asdine/storm"
+
 	"github.com/dream10201/filecloud/v2/errors"
 	"github.com/dream10201/filecloud/v2/users"
 )
@@ -38,17 +39,17 @@ func (st usersBackend) GetBy(i interface{}) (user *users.User, err error) {
 }
 
 func (st usersBackend) Gets() ([]*users.User, error) {
-	users := []*users.User{}
-	err := st.db.All(&users)
+	var allUsers []*users.User
+	err := st.db.All(&allUsers)
 	if err == storm.ErrNotFound {
 		return nil, errors.ErrNotExist
 	}
 
 	if err != nil {
-		return users, err
+		return allUsers, err
 	}
 
-	return users, err
+	return allUsers, err
 }
 
 func (st usersBackend) Update(user *users.User, fields ...string) error {

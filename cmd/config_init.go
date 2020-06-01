@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/dream10201/filecloud/v2/settings"
 	"github.com/spf13/cobra"
+
+	"github.com/dream10201/filecloud/v2/settings"
 )
 
 func init() {

@@ -10,7 +10,7 @@ import (
 	"github.com/dream10201/filecloud/v2/errors"
 )
 
-func renderJSON(w http.ResponseWriter, r *http.Request, data interface{}) (int, error) {
+func renderJSON(w http.ResponseWriter, _ *http.Request, data interface{}) (int, error) {
 	marsh, err := json.Marshal(data)
 
 	if err != nil {
@@ -43,7 +43,7 @@ func errToStatus(err error) int {
 // This is an addaptation if http.StripPrefix in which we don't
 // return 404 if the page doesn't have the needed prefix.
 func stripPrefix(prefix string, h http.Handler) http.Handler {
-	if prefix == "" {
+	if prefix == "" || prefix == "/" {
 		return h
 	}
 

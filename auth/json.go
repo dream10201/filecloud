@@ -66,7 +66,7 @@ func (a JSONAuth) LoginPage() bool {
 
 const reCaptchaAPI = "/recaptcha/api/siteverify"
 
-// ReCaptcha identifies a recaptcha conenction.
+// ReCaptcha identifies a recaptcha connection.
 type ReCaptcha struct {
 	Host   string `json:"host"`
 	Key    string `json:"key"`
@@ -89,6 +89,7 @@ func (r *ReCaptcha) Ok(response string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
+	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return false, nil

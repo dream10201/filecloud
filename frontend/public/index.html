@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="/" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -12,8 +11,8 @@
 
   <title>[{[ if .Name -]}][{[ .Name ]}][{[ else ]}]File Cloud[{[ end ]}]</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/[{[ .StaticURL ]}]/img/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/[{[ .StaticURL ]}]/img/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="[{[ .StaticURL ]}]/img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="[{[ .StaticURL ]}]/img/icons/favicon-16x16.png">
   <!-- Add to home screen for Android and modern mobile browsers -->
   <link rel="manifest" id="manifestPlaceholder" crossorigin="use-credentials">
   <meta name="theme-color" content="#2979ff">
@@ -22,20 +21,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="assets">
-  <link rel="apple-touch-icon" href="/[{[ .StaticURL ]}]/img/icons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" href="[{[ .StaticURL ]}]/img/icons/apple-touch-icon-152x152.png">
 
   <!-- Add to home screen for Windows -->
-  <meta name="msapplication-TileImage" content="/[{[ .StaticURL ]}]/img/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="[{[ .StaticURL ]}]/img/icons/msapplication-icon-144x144.png">
   <meta name="msapplication-TileColor" content="#2979ff">
 
   <!-- Inject Some Variables and generate the manifest json -->
   <script>
-    window.filecloud = JSON.parse(`[{[ .Json ]}]`);
+    window.FileBrowser = JSON.parse(`[{[ .Json ]}]`);
     
-    var fullStaticURL = window.location.origin + "/" + window.filecloud.StaticURL;
+    var fullStaticURL = window.location.origin + window.FileBrowser.StaticURL;
     var dynamicManifest = {
-      "name": window.filecloud.Name || 'File Cloud',
-      "short_name": window.filecloud.Name || 'File Cloud',
+      "name": window.FileBrowser.Name || 'File Cloud',
+      "short_name": window.FileBrowser.Name || 'File Cloud',
       "icons": [
         {
           "src": fullStaticURL + "/img/icons/android-chrome-192x192.png",
@@ -48,7 +47,7 @@
           "type": "image/png"
         }
       ],
-      "start_url": window.location.origin + window.filecloud.BaseURL,
+      "start_url": window.location.origin + window.FileBrowser.BaseURL,
       "display": "standalone",
       "background_color": "#ffffff",
       "theme_color": "#455a64"
@@ -135,10 +134,10 @@
   </div>
 
   [{[ if .Theme -]}]
-    <link rel="stylesheet" href="/[{[ .StaticURL ]}]/themes/[{[ .Theme ]}].css" />
+    <link rel="stylesheet" href="[{[ .StaticURL ]}]/themes/[{[ .Theme ]}].css" />
   [{[ end ]}]
   [{[ if .CSS -]}]
-    <link rel="stylesheet" href="/[{[ .StaticURL ]}]/custom.css" />
+    <link rel="stylesheet" href="[{[ .StaticURL ]}]/custom.css" />
   [{[ end ]}]
 </body>
 </html>

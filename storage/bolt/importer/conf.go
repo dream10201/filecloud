@@ -7,14 +7,14 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/dream10201/filecloud/v2/auth"
-	"github.com/dream10201/filecloud/v2/users"
-
 	"github.com/asdine/storm"
-	"github.com/dream10201/filecloud/v2/settings"
-	"github.com/dream10201/filecloud/v2/storage"
 	toml "github.com/pelletier/go-toml"
 	yaml "gopkg.in/yaml.v2"
+
+	"github.com/dream10201/filecloud/v2/auth"
+	"github.com/dream10201/filecloud/v2/settings"
+	"github.com/dream10201/filecloud/v2/storage"
+	"github.com/dream10201/filecloud/v2/users"
 )
 
 type oldDefs struct {

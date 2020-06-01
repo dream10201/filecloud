@@ -4,11 +4,11 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/dream10201/filecloud/v2/errors"
+	"github.com/spf13/afero"
 
+	"github.com/dream10201/filecloud/v2/errors"
 	"github.com/dream10201/filecloud/v2/files"
 	"github.com/dream10201/filecloud/v2/rules"
-	"github.com/spf13/afero"
 )
 
 // ViewMode describes a view mode.
@@ -52,6 +52,7 @@ var checkableFields = []string{
 
 // Clean cleans up a user and verifies if all its fields
 // are alright to be saved.
+//nolint:gocyclo
 func (u *User) Clean(baseScope string, fields ...string) error {
 	if len(fields) == 0 {
 		fields = checkableFields
