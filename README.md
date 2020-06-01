@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dream10201/filecloud/master/frontend/public/img/logo.svg" width="245"/>
+  <img src="./frontend/public/img/logo.svg" width="245"/>
 </p>
 
 
