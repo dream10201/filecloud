@@ -69,7 +69,7 @@ buildBinary () {
 #  cd $REPO
 #  go build -a -o filecloud -ldflags "-s -w -X github.com/dream10201/filecloud/v2/version.Version=$1 -X github.com/dream10201/filecloud/v2/version.CommitSHA=$COMMIT_SHA"
   cd $REPO
-  go build -a -o filebrowser -ldflags "-s -w -X github.com/filebrowser/filebrowser/v2/version.CommitSHA=$COMMIT_SHA"
+  go build -a -o filecloud -ldflags "-s -w -X github.com/dream10201/filecloud/v2/version.CommitSHA=$COMMIT_SHA"
 }
 
 release () {
