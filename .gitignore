@@ -5,10 +5,10 @@ _old
 rice-box.go
 .idea/
 filecloud
+dist/
 
 .DS_Store
 node_modules
-/frontend/dist
 
 # local env files
 .env.local
