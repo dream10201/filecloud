@@ -13,7 +13,8 @@
   :aria-label="name"
   :aria-selected="isSelected">
     <div>
-      <i class="material-icons">{{ icon }}</i>
+      <img v-if="type==='image'" :src="thumbnailUrl">
+      <i v-else class="material-icons">{{ icon }}</i>
     </div>
 
     <div>
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import { baseURL } from '@/utils/constants'
 import { mapMutations, mapGetters, mapState } from 'vuex'
 import filesize from 'filesize'
 import moment from 'moment'
@@ -44,7 +46,7 @@ export default {
   },
   props: ['name', 'isDir', 'url', 'type', 'size', 'modified', 'index'],
   computed: {
-    ...mapState(['selected', 'req', 'user']),
+    ...mapState(['selected', 'req', 'user', 'jwt']),
     ...mapGetters(['selectedCount']),
     isSelected () {
       return (this.selected.indexOf(this.index) !== -1)
@@ -69,6 +71,10 @@ export default {
       }
 
       return true
+    },
+    thumbnailUrl () {
+      const path = this.url.replace(/^\/files\//, '')
+      return `${baseURL}/api/preview/thumb/${path}?auth=${this.jwt}&inline=true`
     }
   },
   methods: {
@@ -132,7 +138,7 @@ export default {
         return
       }
 
-      if (event.shiftKey) {
+      if (event.shiftKey && this.selected.length > 0) {
         let fi = 0
         let la = 0
 
@@ -145,7 +151,9 @@ export default {
         }
 
         for (; fi <= la; fi++) {
-          this.addSelected(fi)
+          if (this.$store.state.selected.indexOf(fi) == -1) {
+            this.addSelected(fi)
+          }
         }
 
         return

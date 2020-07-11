@@ -56,6 +56,9 @@ archives:
 
 #dockers:
 #  -
+#    dockerfile: Dockerfile
+#    binaries:
+#      - filecloud
 #    goos: linux
 #    goarch: amd64
 #    goarm: ''
@@ -63,5 +66,44 @@ archives:
 #      - "dream10201/filecloud:latest"
 #      - "dream10201/filecloud:{{ .Tag }}"
 #      - "dream10201/filecloud:v{{ .Major }}"
+#    extra_files:
+#      - .docker.json
+#  -
+#    dockerfile: Dockerfile
+#    binaries:
+#      - filecloud
+#    goos: linux
+#    goarch: arm
+#    goarm: '5'
+#    image_templates:
+#      - "dream10201/filecloud:pi"
+#      - "dream10201/filecloud:{{ .Tag }}-pi"
+#      - "dream10201/filecloud:v{{ .Major }}-pi"
+#    extra_files:
+#      - .docker.json
+#  -
+#    dockerfile: Dockerfile.alpine
+#    binaries:
+#      - filecloud
+#    goos: linux
+#    goarch: amd64
+#    goarm: ''
+#    image_templates:
+#      - "dream10201/filecloud:alpine"
+#      - "dream10201/filecloud:{{ .Tag }}-alpine"
+#      - "dream10201/filecloud:v{{ .Major }}-alpine"
+#    extra_files:
+#      - .docker.json
+#  -
+#    dockerfile: Dockerfile.debian
+#    binaries:
+#      - filecloud
+#    goos: linux
+#    goarch: amd64
+#    goarm: ''
+#    image_templates:
+#      - "dream10201/filecloud:debian"
+#      - "dream10201/filecloud:{{ .Tag }}-debian"
+#      - "dream10201/filecloud:v{{ .Major }}-debian"
 #    extra_files:
 #      - .docker.json

@@ -124,7 +124,7 @@
     "documentation": "documentación",
     "branding": "Marca",
     "disableExternalLinks": "Deshabilitar enlaces externos (excepto documentación)",
-    "brandingHelp": "Tú puedes personalizar como se ve tu instancia de FileBrowser cambiándole el nombre, reemplazando ellogo, agregar estilos personalizados e incluso deshabilitando loslinks externos que apuntan hacia GitHub. \nPara mayor información acerca de personalización de marca, por favor revisa el {0}.",
+    "brandingHelp": "Tú puedes personalizar como se ve tu instancia de FileCloud cambiándole el nombre, reemplazando ellogo, agregar estilos personalizados e incluso deshabilitando loslinks externos que apuntan hacia GitHub. \nPara mayor información acerca de personalización de marca, por favor revisa el {0}.",
     "admin": "Admin",
     "administrator": "Administrador",
     "allowCommands": "Ejecutar comandos",

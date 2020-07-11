@@ -5,6 +5,7 @@
       <span>{{ $t('files.lonely') }}</span>
     </h2>
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
+    <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
   </div>
   <div v-else id="listing"
     :class="user.viewMode"
@@ -75,6 +76,7 @@
     </div>
 
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
+    <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
 
     <div :class="{ active: $store.state.multiple }" id="multiple-selection">
     <p>{{ $t('files.multipleSelectionEnabled') }}</p>
@@ -87,6 +89,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import throttle from 'lodash.throttle'
 import Item from './ListingItem'
 import css from '@/utils/css'
 import { users, files as api } from '@/api'
@@ -98,11 +101,17 @@ export default {
   components: { Item },
   data: function () {
     return {
-      show: 50
+      showLimit: 50,
+      uploading: {
+        id: 0,
+        count: 0,
+        size: 0,
+        progress: []
+      }
     }
   },
   computed: {
-    ...mapState(['req', 'selected', 'user']),
+    ...mapState(['req', 'selected', 'user', 'show']),
     nameSorted () {
       return (this.req.sorting.by === 'name')
     },
@@ -130,14 +139,14 @@ export default {
       return { dirs, files }
     },
     dirs () {
-      return this.items.dirs.slice(0, this.show)
+      return this.items.dirs.slice(0, this.showLimit)
     },
     files () {
-      let show = this.show - this.items.dirs.length
+      let showLimit = this.showLimit - this.items.dirs.length
 
-      if (show < 0) show = 0
+      if (showLimit < 0) showLimit = 0
 
-      return this.items.files.slice(0, show)
+      return this.items.files.slice(0, showLimit)
     },
     nameIcon () {
       if (this.nameSorted && !this.ascOrdered) {
@@ -181,11 +190,15 @@ export default {
     document.removeEventListener('drop', this.drop)
   },
   methods: {
-    ...mapMutations([ 'updateUser' ]),
+    ...mapMutations([ 'updateUser', 'addSelected' ]),
     base64: function (name) {
       return window.btoa(unescape(encodeURIComponent(name)))
     },
-    keyEvent (event) {
+    keyEvent (event) {      
+      if (this.show !== null) {
+        return
+      }
+
       if (!event.ctrlKey && !event.metaKey) {
         return
       }
@@ -203,6 +216,19 @@ export default {
           break
         case 'v':
           this.paste(event)
+          break
+        case 'a':
+          event.preventDefault()
+          for (let file of this.items.files) {
+            if (this.$store.state.selected.indexOf(file.index) === -1) {
+              this.addSelected(file.index)
+            }
+          }
+          for (let dir of this.items.dirs) {
+            if (this.$store.state.selected.indexOf(dir.index) === -1) {
+              this.addSelected(dir.index)
+            }
+          }
           break
       }
     },
@@ -270,7 +296,7 @@ export default {
     },
     scrollEvent () {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.show += 50
+        this.showLimit += 50
       }
     },
     dragEnter () {
@@ -290,10 +316,9 @@ export default {
       this.resetOpacity()
 
       let dt = event.dataTransfer
-      let files = dt.files
       let el = event.target
 
-      if (files.length <= 0) return
+      if (dt.files.length <= 0) return
 
       for (let i = 0; i < 5; i++) {
         if (el !== null && !el.classList.contains('item')) {
@@ -306,28 +331,45 @@ export default {
         base = el.querySelector('.name').innerHTML + '/'
       }
 
-      if (base !== '') {
-        api.fetch(this.$route.path + base)
-          .then(req => {
-            this.checkConflict(files, req.items, base)
-          })
-          .catch(this.$showError)
-
-        return
+      if (base === '') {
+        this.scanFiles(dt).then((result) => {
+          this.checkConflict(result, this.req.items, base)
+        })
+      } else {
+        this.scanFiles(dt).then((result) => {
+          api.fetch(this.$route.path + base)
+            .then(req => {
+                this.checkConflict(result, req.items, base)
+            })
+            .catch(this.$showError)
+        })
       }
-
-      this.checkConflict(files, this.req.items, base)
     },
     checkConflict (files, items, base) {
       if (typeof items === 'undefined' || items === null) {
         items = []
       }
 
+      let folder_upload = false
+      if (files[0].fullPath !== undefined) {
+        folder_upload = true
+      }
+
       let conflict = false
       for (let i = 0; i < files.length; i++) {
+        let file = files[i]
+        let name = file.name
+
+        if (folder_upload) {
+          let dirs = file.fullPath.split("/")
+          if (dirs.length > 1) {
+            name = dirs[0]
+          }
+        }
+
         let res = items.findIndex(function hasConflict (element) {
           return (element.name === this)
-        }, files[i].name)
+        }, name)
 
         if (res >= 0) {
           conflict = true
@@ -350,7 +392,19 @@ export default {
       })
     },
     uploadInput (event) {
-      this.checkConflict(event.currentTarget.files, this.req.items, '')
+      this.$store.commit('closeHovers')
+
+      let files = event.currentTarget.files
+      let folder_upload = files[0].webkitRelativePath !== undefined && files[0].webkitRelativePath !== ''
+
+      if (folder_upload) {
+        for (let i = 0; i < files.length; i++) {
+          let file = files[i]
+          files[i].fullPath = file.webkitRelativePath
+        }
+      }
+
+      this.checkConflict(files, this.req.items, '')
     },
     resetOpacity () {
       let items = document.getElementsByClassName('item')
@@ -359,37 +413,137 @@ export default {
         file.style.opacity = 1
       })
     },
+    scanFiles(dt) {
+        return new Promise((resolve) => {
+            let reading = 0
+            const contents = []
+
+            if (dt.items !== undefined) {
+              for (let item of dt.items) {
+                if (item.kind === "file" && typeof item.webkitGetAsEntry === "function") {
+                  const entry = item.webkitGetAsEntry()
+                  readEntry(entry)
+                }
+              }
+            } else {
+              resolve(dt.files)
+            }
+
+            function readEntry(entry, directory = "") {
+                if (entry.isFile) {
+                    reading++
+                    entry.file(file => {
+                        reading--
+
+                        file.fullPath = `${directory}${file.name}`
+                        contents.push(file)
+
+                        if (reading === 0) {
+                            resolve(contents)
+                        }
+                    })
+                } else if (entry.isDirectory) {
+                    const dir = {
+                      isDir: true,
+                      path: `${directory}${entry.name}`
+                    }
+
+                    contents.push(dir)
+
+                    readReaderContent(entry.createReader(), `${directory}${entry.name}`)
+                }
+            }
+
+            function readReaderContent(reader, directory) {
+                reading++
+
+                reader.readEntries(function (entries) {
+                    reading--
+                    if (entries.length > 0) {
+                        for (const entry of entries) {
+                            readEntry(entry, `${directory}/`)
+                        }
+
+                        readReaderContent(reader, `${directory}/`)
+                    }
+
+                    if (reading === 0) {
+                        resolve(contents)
+                    }
+                })
+            }
+        })
+    },
+    setProgress: throttle(function() {
+      if (this.uploading.count == 0) {
+        return
+      }
+      
+      let sum = this.uploading.progress.reduce((acc, val) => acc + val)
+      this.$store.commit('setProgress', Math.ceil(sum / this.uploading.size * 100))
+    }, 100, {leading: false, trailing: true}),
     handleFiles (files, base, overwrite = false) {
-      buttons.loading('upload')
+      if (this.uploading.count == 0) {
+        buttons.loading('upload')
+      }
+
       let promises = []
-      let progress = new Array(files.length).fill(0)
 
       let onupload = (id) => (event) => {
-        progress[id] = (event.loaded / event.total) * 100
-
-        let sum = 0
-        for (let i = 0; i < progress.length; i++) {
-          sum += progress[i]
-        }
-
-        this.$store.commit('setProgress', Math.ceil(sum / progress.length))
+        this.uploading.progress[id] = event.loaded
+        this.setProgress()
       }
 
       for (let i = 0; i < files.length; i++) {
         let file = files[i]
-        let filenameEncoded = url.encodeRFC5987ValueChars(file.name)
-        promises.push(api.post(this.$route.path + base + filenameEncoded, file, overwrite, onupload(i)))
+
+        if (!file.isDir) {
+          let filename = (file.fullPath !== undefined) ? file.fullPath : file.name
+          let filenameEncoded = url.encodeRFC5987ValueChars(filename)
+
+          let id = this.uploading.id
+
+          this.uploading.size += file.size
+          this.uploading.id++
+          this.uploading.count++
+
+          let promise = api.post(this.$route.path + base + filenameEncoded, file, overwrite, throttle(onupload(id), 100)).finally(() => {            
+            this.uploading.count--
+          })
+
+          promises.push(promise)
+        } else {
+          let uri = this.$route.path + base
+          let folders = file.path.split("/")
+
+          for (let i = 0; i < folders.length; i++) {
+            let folder = folders[i]
+            let folderEncoded = encodeURIComponent(folder)
+            uri += folderEncoded + "/"
+          }
+
+          api.post(uri)
+        }
       }
 
       let finish = () => {
+        if (this.uploading.count > 0) {
+          return
+        }
+
         buttons.success('upload')
+
         this.$store.commit('setProgress', 0)
+        this.$store.commit('setReload', true)
+
+        this.uploading.id = 0
+        this.uploading.sizes = []
+        this.uploading.progress = []        
       }
 
       Promise.all(promises)
         .then(() => {
           finish()
-          this.$store.commit('setReload', true)
         })
         .catch(error => {
           finish()
