@@ -7,11 +7,11 @@ const recaptchaKey = window.FileCloud.ReCaptchaKey
 const signup = window.FileCloud.Signup
 const version = window.FileCloud.Version
 const logoURL = `${staticURL}/img/logo.svg`
-const noAuth = window.FileBrowser.NoAuth
-const authMethod = window.FileBrowser.AuthMethod
-const loginPage = window.FileBrowser.LoginPage
-const theme = window.FileBrowser.Theme
-const enableThumbs = window.FileBrowser.EnableThumbs
+const noAuth = window.FileCloud.NoAuth
+const authMethod = window.FileCloud.AuthMethod
+const loginPage = window.FileCloud.LoginPage
+const theme = window.FileCloud.Theme
+const enableThumbs = window.FileCloud.EnableThumbs
 
 export {
   name,
