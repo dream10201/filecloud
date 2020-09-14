@@ -12,6 +12,7 @@ const authMethod = window.FileCloud.AuthMethod
 const loginPage = window.FileCloud.LoginPage
 const theme = window.FileCloud.Theme
 const enableThumbs = window.FileCloud.EnableThumbs
+const resizePreview = window.FileCloud.ResizePreview
 
 export {
   name,
@@ -26,5 +27,6 @@ export {
   authMethod,
   loginPage,
   theme,
-  enableThumbs
+  enableThumbs,
+  resizePreview
 }
