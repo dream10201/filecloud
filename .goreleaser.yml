@@ -20,11 +20,11 @@ build:
     - darwin
     - linux
     - windows
-    - freebsd
-    - netbsd
-    - openbsd
-    - dragonfly
-    - solaris
+#    - freebsd
+#    - netbsd
+#    - openbsd
+#    - dragonfly
+#    - solaris
   goarch:
     - amd64
     - 386
