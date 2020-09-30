@@ -22,11 +22,6 @@ jobs:
         env:
           FILECLOUD_VERSION: ${{github.ref}}
       -
-        name: update system
-        run: |
-          sudo apt update
-          sudo apt -y upgrade
-      -
         name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -40,7 +35,7 @@ jobs:
         name: build assets
         run: |
           go mod download
-          chmod a+x ./wizard.sh \
+          chmod a+x ./wizard.sh
           ./wizard.sh -b
       -
         name: Run GoReleaser
