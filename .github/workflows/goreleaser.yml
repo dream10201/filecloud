@@ -11,17 +11,17 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-	
+
     steps:
       -
         name: Checkout
         uses: actions/checkout@master
         with:
           fetch-depth: 0
-		run: |
-		  sudo apt update
-		  sudo apt -y install nodejs git
-      
+	  run: |
+            sudo apt update
+            sudo apt -y install nodejs git
+
       -
         name: Set up Go
         uses: actions/setup-go@v2
