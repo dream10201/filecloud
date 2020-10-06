@@ -13,6 +13,7 @@ const loginPage = window.FileCloud.LoginPage
 const theme = window.FileCloud.Theme
 const enableThumbs = window.FileCloud.EnableThumbs
 const resizePreview = window.FileCloud.ResizePreview
+const enableExec = window.FileCloud.EnableExec
 
 export {
   name,
@@ -28,5 +29,6 @@ export {
   loginPage,
   theme,
   enableThumbs,
-  resizePreview
+  resizePreview,
+  enableExec
 }

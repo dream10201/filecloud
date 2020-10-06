@@ -41,6 +41,7 @@ func handleWithStaticData(w http.ResponseWriter, _ *http.Request, d *data, box *
 		"Theme":           d.settings.Branding.Theme,
 		"EnableThumbs":    d.server.EnableThumbnails,
 		"ResizePreview":   d.server.ResizePreview,
+		"EnableExec":      d.server.EnableExec,
 	}
 
 	if d.settings.Branding.Files != "" {
@@ -78,7 +79,14 @@ func handleWithStaticData(w http.ResponseWriter, _ *http.Request, d *data, box *
 
 	data["Json"] = string(b)
 
-	index := template.Must(template.New("index").Delims("[{[", "]}]").Parse(box.MustString(file)))
+	fileContents, err := box.String(file)
+	if err != nil {
+		if err == os.ErrNotExist {
+			return http.StatusNotFound, err
+		}
+		return http.StatusInternalServerError, err
+	}
+	index := template.Must(template.New("index").Delims("[{[", "]}]").Parse(fileContents))
 	err = index.Execute(w, data)
 	if err != nil {
 		return http.StatusInternalServerError, err
