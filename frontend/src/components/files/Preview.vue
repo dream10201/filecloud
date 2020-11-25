@@ -5,9 +5,7 @@
         <i class="material-icons">close</i>
       </button>
 
-      <div class="title">
-        <span>{{ this.name }}</span>
-      </div>
+      <div class="title">{{ this.name }}</div>
 
       <preview-size-button v-if="isResizeEnabled && this.req.type === 'image'" @change-size="toggleSize" v-bind:size="fullSize" :disabled="loading"></preview-size-button>
       <button @click="openMore" id="more" :aria-label="$t('buttons.more')" :title="$t('buttons.more')" class="action">
@@ -135,16 +133,29 @@ export default {
     }
   },
   async mounted () {
-    window.addEventListener('keyup', this.key)
+    window.addEventListener('keydown', this.key)
     this.$store.commit('setPreviewMode', true)
     this.listing = this.oldReq.items
+    this.$root.$on('preview-deleted', this.deleted)
     this.updatePreview()
   },
   beforeDestroy () {
-    window.removeEventListener('keyup', this.key)
+    window.removeEventListener('keydown', this.key)
     this.$store.commit('setPreviewMode', false)
+    this.$root.$off('preview-deleted', this.deleted)
   },
   methods: {
+    deleted () {
+      this.listing = this.listing.filter(item => item.name !== this.name)
+
+      if (this.hasNext) {
+        this.next()
+      } else if (!this.hasPrevious && !this.hasNext) {
+        this.back()
+      } else {
+        this.prev()
+      }
+    },
     back () {
       this.$store.commit('setPreviewMode', false)
       let uri = url.removeLastDir(this.$route.path) + '/'
@@ -157,7 +168,6 @@ export default {
       this.$router.push({ path: this.nextLink })
     },
     key (event) {
-      event.preventDefault()
 
       if (this.show !== null) {
         return

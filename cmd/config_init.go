@@ -60,8 +60,8 @@ override the options.`,
 		checkErr(err)
 
 		fmt.Printf(`
-Congratulations! You've set up your database to use with File Cloud.
-Now add your first user via 'filecloud users new' and then you just
+Congratulations! You've set up your database to use with File Browser.
+Now add your first user via 'filecloud users add' and then you just
 need to call the main command to boot up the server.
 `)
 		printSettings(ser, s, auther)
