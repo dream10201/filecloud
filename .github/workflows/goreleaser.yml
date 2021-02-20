@@ -20,7 +20,8 @@ jobs:
         with:
           fetch-depth: 0
         env:
-          FILECLOUD_VERSION: ${{github.ref}}
+          FILECLOUD_VERSION: v1.1.3
+          #${{github.ref}}
       -
         name: Set up Go
         uses: actions/setup-go@v2
