@@ -38,6 +38,7 @@ type FileInfo struct {
 	Subtitles []string          `json:"subtitles,omitempty"`
 	Content   string            `json:"content,omitempty"`
 	Checksums map[string]string `json:"checksums,omitempty"`
+	Token     string            `json:"token,omitempty"`
 }
 
 // FileOptions are the options when getting a file info.
@@ -47,6 +48,7 @@ type FileOptions struct {
 	Modify     bool
 	Expand     bool
 	ReadHeader bool
+	Token      string
 	Checker    rules.Checker
 }
 
@@ -72,11 +74,12 @@ func NewFileInfo(opts FileOptions) (*FileInfo, error) {
 		IsDir:     info.IsDir(),
 		Size:      info.Size(),
 		Extension: filepath.Ext(info.Name()),
+		Token:     opts.Token,
 	}
 
 	if opts.Expand {
 		if file.IsDir {
-			if err := file.readListing(opts.Checker, opts.ReadHeader); err != nil { //nolint:shadow
+			if err := file.readListing(opts.Checker, opts.ReadHeader); err != nil { //nolint:govet
 				return nil, err
 			}
 			return file, nil
