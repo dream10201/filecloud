@@ -52,7 +52,7 @@ build-frontend: | ; $(info $(M) building frontend…)
 ## build-backend: Build backend
 .PHONY: build-backend
 build-backend: bundle-frontend | ; $(info $(M) building backend…)
-	$Q $(GO) build -ldflags '$(LDFLAGS)' -o filebrowser
+	$Q $(GO) build -ldflags '$(LDFLAGS)' -o filecloud
 
 bundle-frontend: | $(RICE) ; $(info $(M) building backend…)
 	$Q cd ./http && rm -rf rice-box.go && $(RICE) embed-go
