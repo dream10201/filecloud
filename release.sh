@@ -2,6 +2,8 @@
 set -e
 REPO=$(cd $(dirname $0); pwd)
 RELEASE=""
+DELETE=""
+
 checkParam () {
   echo "👀 Checking semver format"
 
@@ -21,6 +23,10 @@ checkParam () {
     echo "❌ Not valid semver format. See semver.org"
     exit 1
   fi
+}
+del_release () {
+  git tag -d $1
+  git push origin :refs/tags/$1
 }
 release () {
   cd $REPO
@@ -44,6 +50,8 @@ while getopts "bacr:d" o; do
     r)
       RELEASE=${OPTARG}
       ;;
+    d)
+      DELETE=${OPTARG}
     *)
       usage
       ;;
@@ -52,4 +60,8 @@ done
 shift $((OPTIND-1))
 if [ "$RELEASE" != "" ]; then
   release $RELEASE
+fi
+
+if [ "DELETE" != "" ]; then
+  del_release $DELETE
 fi
