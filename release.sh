@@ -52,6 +52,7 @@ while getopts "bacr:d" o; do
       ;;
     d)
       DELETE=${OPTARG}
+      ;;
     *)
       usage
       ;;
