@@ -10,11 +10,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/mholt/archiver"
+	"github.com/spf13/afero"
+
 	"github.com/dream10201/filecloud/v2/files"
 	"github.com/dream10201/filecloud/v2/fileutils"
 	"github.com/dream10201/filecloud/v2/users"
-	"github.com/mholt/archiver"
-	"github.com/spf13/afero"
 )
 
 func slashClean(name string) string {
