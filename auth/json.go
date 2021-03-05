@@ -20,7 +20,7 @@ type jsonCred struct {
 	ReCaptcha string `json:"recaptcha"`
 }
 
-// JSONAuth is a json implementaion of an Auther.
+// JSONAuth is a json implementation of an Auther.
 type JSONAuth struct {
 	ReCaptcha *ReCaptcha `json:"recaptcha" yaml:"recaptcha"`
 }

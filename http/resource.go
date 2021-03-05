@@ -2,6 +2,7 @@ package http
 
 import (
 	"fmt"
+	"github.com/spf13/afero"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -10,7 +11,6 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
-	"github.com/spf13/afero"
 
 	"github.com/dream10201/filecloud/v2/errors"
 	"github.com/dream10201/filecloud/v2/files"
