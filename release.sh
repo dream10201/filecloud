@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 set -e
+
+
+#  git tag -d "$1"
+#  git push origin :refs/tags/"$1"
+
 REPO=$(cd $(dirname $0); pwd)
 RELEASE=""
 DELETE=""
@@ -24,12 +29,6 @@ checkParam () {
     exit 1
   fi
 }
-del_release () {
-  cd $REPO
-  checkParam $1
-  git tag -d "$1"
-  git push origin :refs/tags/"$1"
-}
 release () {
   cd $REPO
 
@@ -52,9 +51,6 @@ while getopts "bacr:d" o; do
     r)
       RELEASE=${OPTARG}
       ;;
-    d)
-      DELETE=${OPTARG}
-      ;;
     *)
       usage
       ;;
@@ -63,8 +59,4 @@ done
 shift $((OPTIND-1))
 if [ "$RELEASE" != "" ]; then
   release $RELEASE
-fi
-
-if [ "$DELETE" != "" ]; then
-  del_release $DELETE
 fi
