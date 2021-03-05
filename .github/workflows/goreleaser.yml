@@ -24,12 +24,12 @@ jobs:
           FILECLOUD_VERSION: ${{github.ref}}
       -
         name: Setup Go environment
-        uses: actions/setup-go@v2.1.3
+        uses: actions/setup-go@v2
         with:
-          go-version: '1.16'
+          go-version: 1.16
       -
         name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2
         with:
           check-latest: true
       - run: |
@@ -37,9 +37,9 @@ jobs:
           export GOPATH=/tmp
           go mod download
       - run: sudo npm i -g commitlint
-      - run: sudo make lint
+      - run: make lint
       - name: Build fronetend
-        run: sudo make build-frontend
+        run: make build-frontend
 #      -
 #        name: build assets
 #        run: |
