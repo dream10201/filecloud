@@ -25,7 +25,7 @@ checkParam () {
   fi
 }
 del_release () {
-  git tag -d $1
+  git tag -d "$1"
   git push origin :refs/tags/$1
 }
 release () {
@@ -63,6 +63,6 @@ if [ "$RELEASE" != "" ]; then
   release $RELEASE
 fi
 
-if [ "DELETE" != "" ]; then
+if [ "$DELETE" != "" ]; then
   del_release $DELETE
 fi
