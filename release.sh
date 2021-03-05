@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e
 REPO=$(cd $(dirname $0); pwd)
-
+RELEASE=""
 checkParam () {
   echo "👀 Checking semver format"
 
@@ -42,10 +42,7 @@ release () {
 while getopts "bacr:d" o; do
   case "${o}" in
     r)
-      release
-      ;;
-    a)
-      ASSETS="true"
+      RELEASE=${OPTARG}
       ;;
     *)
       usage
@@ -53,3 +50,6 @@ while getopts "bacr:d" o; do
   esac
 done
 shift $((OPTIND-1))
+if [ "$RELEASE" != "" ]; then
+  release $RELEASE
+fi
