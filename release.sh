@@ -47,3 +47,8 @@ while getopts "bacr:d" o; do
     a)
       ASSETS="true"
       ;;
+    *)
+      usage
+      ;;
+  esac
+done
