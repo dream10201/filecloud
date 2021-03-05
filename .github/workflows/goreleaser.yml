@@ -30,6 +30,9 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           check-latest: true
+      - run: |
+          export GO111MODULE=on
+          export GOPATH=/tmp
       - run: sudo npm i -g commitlint
       - run: sudo make lint
       - name: Build fronetend
