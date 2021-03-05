@@ -52,3 +52,4 @@ while getopts "bacr:d" o; do
       ;;
   esac
 done
+shift $((OPTIND-1))
