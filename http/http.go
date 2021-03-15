@@ -1,6 +1,7 @@
 package http
 
 import (
+	"io/fs"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -14,11 +15,17 @@ type modifyRequest struct {
 	Which []string `json:"which"` // Answer to: which fields?
 }
 
-func NewHandler(imgSvc ImgService, fileCache FileCache, store *storage.Storage, server *settings.Server) (http.Handler, error) {
+func NewHandler(
+	imgSvc ImgService,
+	fileCache FileCache,
+	store *storage.Storage,
+	server *settings.Server,
+	assetsFs fs.FS,
+) (http.Handler, error) {
 	server.Clean()
 
 	r := mux.NewRouter()
-	index, static := getStaticHandlers(store, server)
+	index, static := getStaticHandlers(store, server, assetsFs)
 
 	// NOTE: This fixes the issue where it would redirect if people did not put a
 	// trailing slash in the end. I hate this decision since this allows some awful
@@ -47,8 +54,8 @@ func NewHandler(imgSvc ImgService, fileCache FileCache, store *storage.Storage, 
 
 	api.PathPrefix("/resources").Handler(monkey(resourceGetHandler, "/api/resources")).Methods("GET")
 	api.PathPrefix("/resources").Handler(monkey(resourceDeleteHandler(fileCache), "/api/resources")).Methods("DELETE")
-	api.PathPrefix("/resources").Handler(monkey(resourcePostPutHandler, "/api/resources")).Methods("POST")
-	api.PathPrefix("/resources").Handler(monkey(resourcePostPutHandler, "/api/resources")).Methods("PUT")
+	api.PathPrefix("/resources").Handler(monkey(resourcePostHandler(fileCache), "/api/resources")).Methods("POST")
+	api.PathPrefix("/resources").Handler(monkey(resourcePutHandler, "/api/resources")).Methods("PUT")
 	api.PathPrefix("/resources").Handler(monkey(resourcePatchHandler, "/api/resources")).Methods("PATCH")
 
 	api.Path("/shares").Handler(monkey(shareListHandler, "/api/shares")).Methods("GET")

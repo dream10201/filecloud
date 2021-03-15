@@ -3,6 +3,7 @@ package cmd
 import (
 	"crypto/tls"
 	"errors"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"net"
@@ -19,9 +20,10 @@ import (
 	"github.com/spf13/pflag"
 	v "github.com/spf13/viper"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
-
+	
 	"github.com/dream10201/filecloud/v2/auth"
 	"github.com/dream10201/filecloud/v2/diskcache"
+	"github.com/dream10201/filecloud/v2/frontend"
 	fbhttp "github.com/dream10201/filecloud/v2/http"
 	"github.com/dream10201/filecloud/v2/img"
 	"github.com/dream10201/filecloud/v2/settings"
@@ -168,7 +170,12 @@ user created with the credentials from options "username" and "password".`,
 		signal.Notify(sigc, os.Interrupt, syscall.SIGTERM)
 		go cleanupHandler(listener, sigc)
 
-		handler, err := fbhttp.NewHandler(imgSvc, fileCache, d.store, server)
+		assetsFs, err := fs.Sub(frontend.Assets(), "dist")
+		if err != nil {
+			panic(err)
+		}
+
+		handler, err := fbhttp.NewHandler(imgSvc, fileCache, d.store, server, assetsFs)
 		checkErr(err)
 
 		defer listener.Close()

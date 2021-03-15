@@ -3,10 +3,6 @@ project_name: filecloud
 env:
   - GO111MODULE=on
 
-before:
-  hooks:
-    - make bundle-frontend
-
 build:
   env:
     - CGO_ENABLED=0
@@ -57,8 +53,10 @@ archives:
 #    goos: linux
 #    goarch: amd64
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-amd64"
-#      - "dream10201/filecloud:v{{ .Major }}-amd64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-amd64"
+#      - "filebrowser/filebrowser:v{{ .Major }}-amd64"
+#    extra_files:
+#      - .docker.json
 #  -
 #    dockerfile: Dockerfile
 #    use_buildx: true
@@ -73,8 +71,10 @@ archives:
 #    goos: linux
 #    goarch: arm64
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-arm64"
-#      - "dream10201/filecloud:v{{ .Major }}-arm64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-arm64"
+#      - "filebrowser/filebrowser:v{{ .Major }}-arm64"
+#    extra_files:
+#      - .docker.json
 #  -
 #    dockerfile: Dockerfile
 #    use_buildx: true
@@ -90,8 +90,10 @@ archives:
 #    goarch: arm
 #    goarm: '6'
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-armv6"
-#      - "dream10201/filecloud:v{{ .Major }}-armv6"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv6"
+#      - "filebrowser/filebrowser:v{{ .Major }}-armv6"
+#    extra_files:
+#      - .docker.json
 #  -
 #    dockerfile: Dockerfile
 #    use_buildx: true
@@ -107,27 +109,29 @@ archives:
 #    goarch: arm
 #    goarm: '7'
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-armv7"
-#      - "dream10201/filecloud:v{{ .Major }}-armv7"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv7"
+#      - "filebrowser/filebrowser:v{{ .Major }}-armv7"
+#    extra_files:
+#      - .docker.json
 #docker_manifests:
-#  - name_template: "dream10201/filecloud:latest"
+#  - name_template: "filebrowser/filebrowser:latest"
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-amd64"
-#      - "dream10201/filecloud:{{ .Tag }}-arm64"
-#      - "dream10201/filecloud:{{ .Tag }}-armv6"
-#      - "dream10201/filecloud:{{ .Tag }}-armv7"
-#  - name_template: "dream10201/filecloud:{{ .Tag }}"
+#      - "filebrowser/filebrowser:{{ .Tag }}-amd64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-arm64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv6"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv7"
+#  - name_template: "filebrowser/filebrowser:{{ .Tag }}"
 #    image_templates:
-#      - "dream10201/filecloud:{{ .Tag }}-amd64"
-#      - "dream10201/filecloud:{{ .Tag }}-arm64"
-#      - "dream10201/filecloud:{{ .Tag }}-armv6"
-#      - "dream10201/filecloud:{{ .Tag }}-armv7"
-#  - name_template: "dream10201/filecloud:v{{ .Major }}"
+#      - "filebrowser/filebrowser:{{ .Tag }}-amd64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-arm64"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv6"
+#      - "filebrowser/filebrowser:{{ .Tag }}-armv7"
+#  - name_template: "filebrowser/filebrowser:v{{ .Major }}"
 #    image_templates:
-#      - "dream10201/filecloud:v{{ .Major }}-amd64"
-#      - "dream10201/filecloud:v{{ .Major }}-arm64"
-#      - "dream10201/filecloud:v{{ .Major }}-armv6"
-#      - "dream10201/filecloud:v{{ .Major }}-armv7"
+#      - "filebrowser/filebrowser:v{{ .Major }}-amd64"
+#      - "filebrowser/filebrowser:v{{ .Major }}-arm64"
+#      - "filebrowser/filebrowser:v{{ .Major }}-armv6"
+#      - "filebrowser/filebrowser:v{{ .Major }}-armv7"
 #brews:
 #  - name: filebrowser
 #    tap:

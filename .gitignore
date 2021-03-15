@@ -5,7 +5,6 @@ _old
 rice-box.go
 .idea/
 filecloud
-dist/
 
 .DS_Store
 node_modules
